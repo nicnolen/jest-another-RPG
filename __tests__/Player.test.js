@@ -1,5 +1,11 @@
 // Include Player.js in the test file
 const Player = require('../lib/Player');
+const Potion = require('../lib/__mocks__/Potion');
+
+// Mock/replace the constructor with the faked data
+jest.mock('../lib/Potion');
+
+console.log(new Potion());
 
 // Write a test that checks if player has a name, health, strength and agility
 test('creates a player object', () => {
@@ -9,4 +15,8 @@ test('creates a player object', () => {
   expect(player.health).toEqual(expect.any(Number));
   expect(player.strength).toEqual(expect.any(Number));
   expect(player.agility).toEqual(expect.any(Number));
+
+  expect(player.inventory).toEqual(
+    expect.arrayContaining([expect.any(Object)])
+  );
 });
