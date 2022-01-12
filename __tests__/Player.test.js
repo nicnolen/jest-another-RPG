@@ -94,3 +94,14 @@ test('adds a potion to the inventory', () => {
 
   expect(player.inventory.length).toBeGreaterThan(oldCount);
 });
+
+// Write test for when a player uses a potion from inventory
+test('uses a potion from inventory', () => {
+  const player = new Player('Dave');
+  player.inventory = [new Potion(), new Potion(), new Potion()];
+  const oldCount = player.inventory.length;
+
+  player.usePotion(1);
+
+  expect(player.inventory.length).toBeLessThan(oldCount);
+});
